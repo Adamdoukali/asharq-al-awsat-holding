@@ -1,5 +1,17 @@
 {
   "version": 2,
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/real-estate",
+      "destination": "https://asharq-al-awsat-real-estate.vercel.app",
+      "permanent": false
+    },
+    {
+      "source": "/real-estate.html",
+      "destination": "https://asharq-al-awsat-real-estate.vercel.app",
+      "permanent": false
+    }
+  ]
 }
