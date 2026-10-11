@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="fr" class="lenis lenis-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Asharq Al Awsat Group — Holding Familial d'Excellence à Tanger</title>
+  <meta name="description" content="Asharq Al Awsat Group — Plus de 35 ans de vision et d'excellence dans le développement immobilier de prestige et la mobilité de luxe à Tanger, Maroc.">
+  <link rel="icon" type="image/png" href="assets/emblem_white.png">
+
+  <!-- Apple & Modern Minimalist Fonts: Caveat (Ray Corral luxury script), Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Caveat:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Luxury Grey & White Holding Stylesheet -->
+  <link rel="stylesheet" href="styles/holding.css">
+
+  <!-- Lenis & GSAP CDN Scripts for Smooth Luxury Scrolling -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Three.js, Meshopt Decoder & GLTFLoader for Real-Time 3D Engine (SCFO Architecture) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/meshopt_decoder.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       SCFO Real-Time 3D Scene: 3D Chess Knight & Luminous Asharq Emblem
+       Fixed Multi-Section WebGL Canvas + Continuous Living Physics Engine
+       ========================================================================== -->
+  <div id="scfo-3d-container" class="scfo-3d-container" aria-label="Scène 3D Interactive"></div>
+
+  <!-- Floating Luxury Page Indicator (5 Discrete Slides / 4 Moves) -->
+  <nav class="page-scroll-dots" id="page-scroll-dots" aria-label="Pagination des écrans">
+    <button class="scroll-dot active" data-page="0" data-label="01. Accueil" aria-label="Écran 1 : Accueil"></button>
+    <button class="scroll-dot" data-page="1" data-label="02. Le Mot de la Famille" aria-label="Écran 2 : Le Mot de la Famille"></button>
+    <button class="scroll-dot" data-page="2" data-label="03. Asharq Cars" aria-label="Écran 3 : Asharq Al Awsat Cars"></button>
+    <button class="scroll-dot" data-page="3" data-label="04. Immobilier" aria-label="Écran 4 : Immobilier"></button>
+    <button class="scroll-dot" data-page="4" data-label="05. Siège & Contact" aria-label="Écran 5 : Contact"></button>
+  </nav>
+
+  <!-- ==========================================================================
+       Header: Apple Minimalist Floating Nav (Grey & White)
+       ========================================================================== -->
+  <header class="holding-header" id="master-header">
+    <!-- Brand / White Emblem -->
+    <a href="index.html" class="holding-logo-brand" aria-label="Asharq Al Awsat Group">
+      <img src="assets/emblem_white.png" alt="Emblème Blanc Asharq Al Awsat" id="nav-emblem" style="filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));">
+      <span class="holding-brand-title">Asharq Al Awsat <span>Group</span></span>
+    </a>
+
+    <!-- Navigation Links -->
+    <nav class="holding-nav-links" aria-label="Navigation principale">
+      <a href="#family-word" class="holding-nav-link">Le Mot de la Famille</a>
+      <a href="#rental-company" class="holding-nav-link">Asharq Cars</a>
+      <a href="#real-estate-company" class="holding-nav-link">الشرق الأوسط Immobilier</a>
+      <a href="#contact" class="holding-nav-link">Contact</a>
+    </nav>
+
+    <!-- CTAs -->
+    <div class="holding-header-ctas">
+      <a href="car-rental.html" class="btn-apple-outline">
+        <span>Mobilité</span>
+      </a>
+      <a href="real-estate.html" class="btn-apple-dark">
+        <span>Pôle Immobilier</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ==========================================================================
+         FIRST SCROLL: SCFO-Inspired 3D Pure Black Luxury Stage (#000000)
+         Sculpted 3D Chess Knight • Glowing Asharq Al Awsat Calligraphy Halo
+         Continuous Living Motion ("Just Moving") • Mouse Look-At & 360° Drag
+         ========================================================================== -->
+    <section class="ray-hero" id="hero-fullscreen">
+      <!-- High-Performance Anti-Gravity Physics & Morphing Mesh Canvas -->
+      <canvas id="anti-gravity-canvas" class="ray-antigravity-canvas"></canvas>
+
+      <!-- Ambient Shifting Pure White/Silver Glow in Deep Black -->
+      <div class="hero-ambient-glow" id="hero-ambient-glow" aria-hidden="true"></div>
+
+      <!-- Shockwave Click Element -->
+      <div class="hero-shockwave" id="hero-shockwave" aria-hidden="true"></div>
+
+      <!-- Luxury Editorial Hero Overlay -->
+      <div class="hero-editorial-overlay">
+        <div class="hero-brand-pill">
+          <span class="family-tag-dot"></span>
+          <span>Holding Familial • Tanger Depuis 1989</span>
+        </div>
+
+        <h1 class="hero-display-title">
+          <span class="hero-ar-calligraphy">مجموعة الشرق الأوسط</span>
+          <span class="hero-en-title">Asharq Al Awsat Group</span>
+        </h1>
+
+        <p class="hero-display-motto">
+          Bâtisseur d'adresses d'exception et référence de la mobilité de prestige à Tanger depuis plus de trois décennies.
+        </p>
+
+        <div class="hero-ctas-group">
+          <a href="real-estate.html" class="btn-apple-dark">
+            <span>Pôle Immobilier</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="car-rental.html" class="btn-apple-outline">
+            <span>Asharq Cars (Mobilité)</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Minimalist Luxury Scroll Down Indicator -->
+      <a href="#family-word" class="hero-scroll-cue" id="hero-click-hint" aria-label="Scroll down">
+        <span class="hero-scroll-text">Scroll Down</span>
+        <svg class="hero-scroll-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </a>
+    </section>
+
+    <!-- ==========================================================================
+         SECOND SCROLL: Word from Our Family ("Le Mot de Notre Famille")
+         Family Heritage, Vision, 35+ Years in Tangier, 100% Legal Declaration & Integrity
+         ========================================================================== -->
+    <section id="family-word" class="section-family-word">
+      <div class="family-word-container">
+        <!-- Left: Open Stage for 3D Obsidian Knight & Glowing Emblem -->
+        <div class="family-knight-stage">
+          <div class="family-stage-badge">
+            <span class="family-tag-dot"></span>
+            <span>Tanger — Détroit de Gibraltar</span>
+          </div>
+          <div class="family-stage-quote">
+            <p>« La droiture absolue et la pérennité d'un engagement moral. »</p>
+            <span>Fondation Familiale • Depuis 1989</span>
+          </div>
+        </div>
+
+        <!-- Right: Family Message Editorial Column -->
+        <div class="family-editorial-col">
+          <div class="family-tag-pill">
+            <span class="family-tag-dot"></span>
+            <span>Héritage & Fondation Familiale</span>
+          </div>
+
+          <h2 class="family-heading">
+            Le Mot de Notre Famille.
+          </h2>
+
+          <p class="family-script-motto">
+            De notre famille à la vôtre, depuis 1989.
+          </p>
+
+          <p class="family-lead-statement">
+            Bâtir à Tanger depuis plus de trois décennies est un engagement moral avant d'être une entreprise. Fondé par notre famille, le <strong>Groupe Asharq Al Awsat</strong> repose sur un principe immuable : la droiture absolue, la transparence totale et le respect inconditionnel de la parole donnée.
+          </p>
+
+          <blockquote class="family-quote-box">
+            « Nous ne concevons pas nos clients comme de simples acquéreurs, mais comme des membres à part entière d'une communauté soudée par la confiance, l'excellence et la pérennité. »
+          </blockquote>
+
+          <div class="family-pillars-list">
+            <div class="family-pillar-item">
+              <span class="pillar-bullet">✦</span>
+              <div>
+                <strong>100% Déclaré</strong>
+                <p>Déclaration légale intégrale, conformité fiscale stricte et titres fonciers définitifs.</p>
+              </div>
+            </div>
+            <div class="family-pillar-item">
+              <span class="pillar-bullet">✦</span>
+              <div>
+                <strong>Ancrage Tangérois</strong>
+                <p>Valorisation durable du patrimoine du Détroit et investissements continus dans la région.</p>
+              </div>
+            </div>
+            <div class="family-pillar-item">
+              <span class="pillar-bullet">✦</span>
+              <div>
+                <strong>Transmission & Indépendance</strong>
+                <p>Une gouvernance familiale solide, garante d'une relation humaine sur le très long terme.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Family Signature -->
+          <div class="family-signature-lockup">
+            <img src="assets/emblem_white.png" alt="Emblème Asharq Al Awsat" class="family-sig-emblem">
+            <div class="family-sig-info">
+              <span class="family-sig-name">La Famille Fondatrice</span>
+              <span class="family-sig-role">Groupe Asharq Al Awsat • Tanger, Maroc</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         THIRD SCROLL: Location de Voitures & Autocars (Asharq Al Awsat Cars)
+         ========================================================================== -->
+    <section id="rental-company" class="section-portal-screen section-rental">
+      <!-- Full-bleed Fleet Background with Cinematic Shade -->
+      <div class="portal-bg-media" style="background-image: url('assets/fleet.jpg');"></div>
+      <div class="portal-bg-dark-shade"></div>
+
+      <div class="portal-container">
+        <!-- Left: Editorial & Action -->
+        <div class="portal-info-box">
+          <div class="portal-tag">
+            <span class="portal-tag-circle"></span>
+            <span>Mobilité & Transport • Depuis 1985</span>
+          </div>
+
+          <h2 class="portal-title">
+            <span class="portal-arabic-name">الشرق الأوسط</span>
+            <span class="portal-french-name">CARS</span>
+          </h2>
+          <p class="portal-subtitle">Location de Voitures & Autocars à Tanger • Entreprise Familiale Fondée en 1985</p>
+
+          <p class="portal-desc">
+            Acteur familial de référence dans la location de véhicules et le transport à Tanger depuis plus de 40 ans. Flotte complète de berlines d'exception, citadines économiques et services spécialisés d'autocars et autobus. Assistance 24h/24, conciergerie privée et accueil VIP sur mesure à l'Aéroport International Ibn Battouta de Tanger.
+          </p>
+
+          <div class="portal-badges-row">
+            <span class="portal-pill">✦ Maison Familiale Depuis 1985</span>
+            <span class="portal-pill">✦ Voitures & Autocars</span>
+            <span class="portal-pill">✦ Aéroport Tanger Ibn Battouta 24/7</span>
+          </div>
+
+          <div class="portal-cta-row">
+            <a href="car-rental.html" class="btn-apple-dark btn-portal-action">
+              <span>Découvrir la Flotte & Réserver</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Open Stage for 3D Obsidian Knight -->
+        <div class="portal-knight-stage">
+          <div class="family-stage-badge">
+            <span class="family-tag-dot"></span>
+            <span>Tanger — 6 Rue Ibn Katir • Depuis 1985</span>
+          </div>
+          <div class="family-stage-quote">
+            <p>« Plus de 40 ans d'engagement familial au service de la mobilité à Tanger. »</p>
+            <span>Flotte Tourisme & Autocars Déclarée</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         FOURTH SCROLL: الشرق الأوسط Immobilier (Real Estate Company)
+         ========================================================================== -->
+    <section id="real-estate-company" class="section-portal-screen section-realestate">
+      <!-- Full-bleed Architecture Background with Cinematic Shade -->
+      <div class="portal-bg-media" style="background-image: url('assets/projects/palmares_hero.jpg');"></div>
+      <div class="portal-bg-dark-shade"></div>
+
+      <div class="portal-container portal-container-reversed">
+        <!-- Left: Open Stage for 3D Obsidian Knight & Glowing Halo -->
+        <div class="portal-knight-stage">
+          <div class="family-stage-badge">
+            <span class="family-tag-dot"></span>
+            <span>Tanger — Baie & Malabata</span>
+          </div>
+          <div class="family-stage-quote">
+            <p>« Bâtisseur d'adresses d'exception depuis plus de trois décennies. »</p>
+            <span>Titres Fonciers Déclarés à 100%</span>
+          </div>
+        </div>
+
+        <!-- Right: Editorial & Action -->
+        <div class="portal-info-box">
+          <div class="portal-tag">
+            <span class="portal-tag-circle"></span>
+            <span>Promotion & Développement Immobilier</span>
+          </div>
+
+          <!-- Dual Arabic Calligraphy & French Typography -->
+          <h2 class="portal-title">
+            <span class="portal-arabic-name">الشرق الأوسط</span>
+            <span class="portal-french-name">IMMOBILIER</span>
+          </h2>
+          <p class="portal-subtitle">Résidences Privées & Villas de Prestige à Tanger</p>
+
+          <p class="portal-desc">
+            Bâtisseur d'adresses d'exception à Tanger depuis plus de trois décennies. Complexes résidentiels fermés et sécurisés, villas d'architecte contemporaines vue mer et finitions d'une noblesse irréprochable. Déclaration légale à 100% et titres fonciers garantis.
+          </p>
+
+          <!-- 3 Flagship Projects Chips with Official Brand Logos -->
+          <div class="portal-projects-chips">
+            <a href="palmares.html" class="portal-project-chip">
+              <span class="chip-num">01</span>
+              <div class="chip-logo-box">
+                <img src="assets/projects/logo_palmares.png" alt="Palmares Logo" class="chip-logo-img">
+              </div>
+              <div class="chip-content">
+                <span class="chip-title">Palmares</span>
+                <span class="chip-loc">Grand Stade</span>
+              </div>
+            </a>
+            <a href="residence-assalam.html" class="portal-project-chip">
+              <span class="chip-num">02</span>
+              <div class="chip-logo-box">
+                <img src="assets/projects/logo_assalam.png" alt="Assalam Logo" class="chip-logo-img">
+              </div>
+              <div class="chip-content">
+                <span class="chip-title">Assalam</span>
+                <span class="chip-loc">Vue Mer</span>
+              </div>
+            </a>
+            <a href="villas-assalam.html" class="portal-project-chip">
+              <span class="chip-num">03</span>
+              <div class="chip-logo-box">
+                <img src="assets/projects/logo_villas.png" alt="Villas Malabata Logo" class="chip-logo-img">
+              </div>
+              <div class="chip-content">
+                <span class="chip-title">Villas Malabata</span>
+                <span class="chip-loc">Baie de Tanger</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="portal-cta-row">
+            <a href="real-estate.html" class="btn-apple-dark btn-portal-action">
+              <span>Accéder aux Résidences & Villas d'Exception</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+    <!-- ==========================================================================
+         FIFTH SCROLL: Siège Social & Contact (Formulaire de Haute Facture)
+         3D Obsidian Knight at Right (+1.25) • Glassmorphic Contact Console at Left
+         ========================================================================== -->
+    <section id="contact" class="section-portal-screen section-contact-stage">
+      <!-- Dark Titanium Ambient Shade -->
+      <div class="portal-bg-dark-shade contact-ambient-shade"></div>
+
+      <div class="portal-container contact-stage-container">
+        <!-- Left: Interactive Contact Console (The Cool Form) -->
+        <div class="contact-console-card">
+          <div class="contact-console-header">
+            <div class="portal-tag">
+              <span class="portal-tag-circle"></span>
+              <span>Cabinet de Direction • Contact Privilégié</span>
+            </div>
+
+            <div class="contact-console-title">
+              <span class="contact-ar-title">مراسلة إدارة المجموعة</span>
+              <h2 class="contact-main-heading">Écrire à Notre Direction.</h2>
+            </div>
+
+            <p class="contact-sub-statement">
+              Projet d'acquisition immobilière, réservation de flotte automobile ou partenariat d'affaires à Tanger.
+            </p>
+          </div>
+
+          <!-- Interactive Topic Selector Pills -->
+          <div class="contact-topic-group">
+            <span class="contact-topic-label">Pôle ou Objet de Votre Demande :</span>
+            <div class="contact-topic-pills" id="contact-topic-pills">
+              <button type="button" class="topic-pill active" data-topic="Immobilier">
+                <span>🏢 Pôle Immobilier</span>
+              </button>
+              <button type="button" class="topic-pill" data-topic="Mobilite">
+                <span>🚗 Asharq Cars (Mobilité)</span>
+              </button>
+              <button type="button" class="topic-pill" data-topic="Direction">
+                <span>🏛️ Direction & Investissement</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Form Element -->
+          <form id="holding-contact-form" class="contact-form-grid" novalidate>
+            <input type="hidden" name="topic" id="contact-topic-input" value="Immobilier">
+
+            <div class="contact-form-row">
+              <div class="contact-field-wrap">
+                <label for="contact-name" class="contact-field-label">Nom Complet *</label>
+                <input type="text" id="contact-name" name="name" class="contact-input" placeholder="Ex: Mohamed Benali" required autocomplete="name">
+              </div>
+
+              <div class="contact-field-wrap">
+                <label for="contact-phone" class="contact-field-label">Téléphone / WhatsApp *</label>
+                <input type="tel" id="contact-phone" name="phone" class="contact-input" placeholder="+212 600 000 000" required autocomplete="tel">
+              </div>
+            </div>
+
+            <div class="contact-field-wrap">
+              <label for="contact-email" class="contact-field-label">Adresse Email *</label>
+              <input type="email" id="contact-email" name="email" class="contact-input" placeholder="nom@entreprise.com" required autocomplete="email">
+            </div>
+
+            <div class="contact-field-wrap">
+              <label for="contact-message" class="contact-field-label">Votre Message ou Projet *</label>
+              <textarea id="contact-message" name="message" class="contact-textarea" rows="3" placeholder="Précisez votre demande (programme immobilier, type de véhicule ou objet du rendez-vous)..." required></textarea>
+            </div>
+
+            <div class="contact-channel-row">
+              <span class="contact-channel-label">Canal souhaité :</span>
+              <div class="contact-channel-options" id="contact-channel-options">
+                <button type="button" class="channel-chip active" data-channel="WhatsApp">WhatsApp</button>
+                <button type="button" class="channel-chip" data-channel="Téléphone">Appel Téléphonique</button>
+                <button type="button" class="channel-chip" data-channel="Email">Email</button>
+              </div>
+              <input type="hidden" name="channel" id="contact-channel-input" value="WhatsApp">
+            </div>
+
+            <div class="contact-action-row">
+              <button type="submit" class="btn-submit-luxury" id="btn-submit-contact">
+                <span id="btn-submit-label">Transmettre au Cabinet</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+
+              <a href="https://wa.me/212600907262?text=Bonjour,%20je%20souhaite%20échanger%20avec%20le%20cabinet%20de%20direction%20d'Asharq%20Al%20Awsat%20Group" target="_blank" class="btn-whatsapp-instant" id="btn-wa-direct-link" title="Ouvrir WhatsApp directement">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c4.55 0 8.24 3.7 8.24 8.24 0 2.2-.86 4.28-2.42 5.84a8.18 8.18 0 0 1-5.83 2.41c-1.47 0-2.93-.39-4.21-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.192 8.192 0 0 1-1.26-4.39c0-4.54 3.69-8.24 8.24-8.24zm4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.26-1.5-1.41-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29z"/></svg>
+                <span>WhatsApp VIP</span>
+              </a>
+            </div>
+          </form>
+
+          <!-- Interactive Success Confirmation State -->
+          <div id="contact-success-box" class="contact-success-state">
+            <div class="success-check-badge">✓</div>
+            <h3 class="success-title">Message Transmis avec Succès</h3>
+            <p class="success-desc" id="success-custom-text">
+              Votre demande a bien été reçue par le secrétariat général à Tanger. Un responsable dédié vous contactera dans les plus brefs délais.
+            </p>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
+              <a id="success-wa-action" href="#" target="_blank" class="btn-whatsapp-instant">
+                <span>Poursuivre sur WhatsApp</span>
+              </a>
+              <button type="button" id="btn-reset-contact" class="btn-reset-form">
+                Envoyer un autre message
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Stage: Siège Direct Access & Accents (Obsidian Knight Hovers Here) -->
+        <div class="portal-knight-stage contact-side-stage">
+          <div class="family-stage-badge">
+            <span class="family-tag-dot"></span>
+            <span>Tanger — Siège Social & Direction</span>
+          </div>
+
+          <div class="contact-quick-card">
+            <h4>Siège Social</h4>
+            <p>6 Rue Ibn Katir, Avenue Mohamed V, Tanger</p>
+            <span>Royaume du Maroc • Accueil Direction sur Rendez-vous</span>
+          </div>
+
+          <div class="contact-quick-card">
+            <h4>Lignes Directes 24/7</h4>
+            <p><a href="tel:+212600907262" class="contact-direct-link">+212 600 907 262</a></p>
+            <p><a href="tel:+212665877177" class="contact-direct-link">+212 665 877 177</a></p>
+            <span>Courriel : <a href="mailto:contact@asharqgroup.ma" class="contact-direct-link">contact@asharqgroup.ma</a></span>
+          </div>
+
+          <div class="family-stage-quote">
+            <p>« La droiture, la parole donnée et l'éthique au cœur de chaque relation. »</p>
+            <span>Asharq Al Awsat Group • Depuis 1989</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Minimalist Luxury Footer Line -->
+      <div class="contact-minimal-footer">
+        <div>© 2026 Asharq Al Awsat Group. Tous droits réservés.</div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="display:inline-block; width:8px; height:8px; background:#4CD964; border-radius:50%; box-shadow: 0 0 8px #4CD964;"></span>
+          <span>Heure Locale Tanger : <strong id="tanger-clock" style="color: #fff; font-family: monospace;">--:--:-- GMT+1</strong></span>
+        </div>
+        <div>100% Déclaré • Titres Fonciers & Flotte Déclarée</div>
+      </div>
+    </section>
+
+  <!-- ==========================================================================
+       Interactive Script: Lenis Smooth Scroll, 3D Mouse Looking Physics, Click Zoom
+       ========================================================================== -->
+  <script>
+    // 1. Discrete 5-Page Scroll Controller (Only 4 Moves Across 5 Screens)
+    const pageIds = [
+      '#hero-fullscreen',
+      '#family-word',
+      '#rental-company',
+      '#real-estate-company',
+      '#contact'
+    ];
+    let currentPageIndex = 0;
+    let isPageScrolling = false;
+    let pageScrollLockTimer = null;
+
+    // Initialize Lenis engine (smooth programmatic scrollTo without free wheel drift)
+    let lenis;
+    if (typeof Lenis !== 'undefined') {
+      lenis = new Lenis({
+        duration: 1.15,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: 'vertical',
+        smoothWheel: false,
+        syncTouch: false
+      });
+      window.lenis = lenis;
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+
+      if (typeof ScrollTrigger !== 'undefined') {
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => {
+          lenis.raf(time * 1000);
+        });
+        gsap.ticker.lagSmoothing(0);
+      }
+    }
+
+    // Master Header & Dot Indicator State Sync
+    const header = document.getElementById('master-header');
+    const scrollDots = document.querySelectorAll('.scroll-dot');
+
+    function updatePageIndicator(targetIndex) {
+      scrollDots.forEach((dot, idx) => {
+        if (idx === targetIndex) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+
+    function checkHeaderScroll(targetIndex) {
+      const idx = (typeof targetIndex === 'number') ? targetIndex : currentPageIndex;
+      if (idx > 0) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }
+
+    const isMobileMode = () => window.innerWidth <= 820 || (('ontouchstart' in window) && window.innerWidth <= 1024);
+
+    // Dynamic Header & Scroll Position Tracking for Mobile & Free Scroll
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY || window.pageYOffset;
+      if (scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+
+      if (isMobileMode()) {
+        pageIds.forEach((id, idx) => {
+          const el = document.querySelector(id);
+          if (el) {
+            const rect = el.getBoundingClientRect();
+            if (rect.top <= window.innerHeight * 0.45 && rect.bottom >= window.innerHeight * 0.45) {
+              currentPageIndex = idx;
+              window.currentPageIndex = idx;
+              updatePageIndicator(idx);
+            }
+          }
+        });
+      }
+    }, { passive: true });
+
+    // Discrete Page Navigation Function (Desktop: 4 Moves with 3D Knight Arc; Mobile: Native Smooth Scroll)
+    function goToPage(targetIndex, instant = false) {
+      if (targetIndex < 0) targetIndex = 0;
+      if (targetIndex >= pageIds.length) targetIndex = pageIds.length - 1;
+
+      const targetEl = document.querySelector(pageIds[targetIndex]);
+      if (!targetEl && targetIndex !== 0) return;
+
+      currentPageIndex = targetIndex;
+      window.currentPageIndex = currentPageIndex;
+      updatePageIndicator(targetIndex);
+      checkHeaderScroll(targetIndex);
+
+      // Trigger 3D Knight Cinematic Flight Animation
+      if (typeof window.__scfoTransitionToPage === 'function') {
+        window.__scfoTransitionToPage(targetIndex, instant);
+      }
+
+      // Mobile Handling: Native smooth scrolling with NO lock
+      if (isMobileMode()) {
+        if (targetIndex === 0) {
+          window.scrollTo({ top: 0, behavior: instant ? 'auto' : 'smooth' });
+        } else if (targetEl) {
+          targetEl.scrollIntoView({ behavior: instant ? 'auto' : 'smooth' });
+        }
+        return;
+      }
+
+      // Desktop Handling: Discrete snap navigation with Lenis & lock
+      isPageScrolling = true;
+      window.isPageScrolling = true;
+      clearTimeout(pageScrollLockTimer);
+
+      if (instant) {
+        if (lenis) {
+          lenis.scrollTo(targetIndex === 0 ? 0 : targetEl, { immediate: true });
+        } else {
+          window.scrollTo(0, targetIndex === 0 ? 0 : targetEl.offsetTop);
+        }
+        isPageScrolling = false;
+        window.isPageScrolling = false;
+        return;
+      }
+
+      if (lenis) {
+        lenis.scrollTo(targetIndex === 0 ? 0 : targetEl, {
+          duration: 1.15,
+          lock: true,
+          onComplete: () => {
+            clearTimeout(pageScrollLockTimer);
+            pageScrollLockTimer = setTimeout(() => {
+              isPageScrolling = false;
+              window.isPageScrolling = false;
+            }, 100);
+          }
+        });
+      } else {
+        if (targetIndex === 0) {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+
+      pageScrollLockTimer = setTimeout(() => {
+        isPageScrolling = false;
+        window.isPageScrolling = false;
+      }, 1300);
+    }
+    window.goToPage = goToPage;
+
+    // Wheel Event Interception: Active ONLY on Desktop Mice/Trackpads
+    let wheelAccumulator = 0;
+    let wheelResetTimeout = null;
+    const WHEEL_THRESHOLD = 26;
+
+    window.addEventListener('wheel', (e) => {
+      // Allow natural fluid scrolling on mobile devices
+      if (isMobileMode()) return;
+
+      // Prevent continuous browser scrolling on desktop for 5 crisp slides
+      e.preventDefault();
+
+      if (isPageScrolling) return;
+
+      wheelAccumulator += e.deltaY;
+      clearTimeout(wheelResetTimeout);
+      wheelResetTimeout = setTimeout(() => {
+        wheelAccumulator = 0;
+      }, 200);
+
+      if (wheelAccumulator >= WHEEL_THRESHOLD) {
+        wheelAccumulator = 0;
+        if (currentPageIndex < pageIds.length - 1) {
+          goToPage(currentPageIndex + 1);
+        }
+      } else if (wheelAccumulator <= -WHEEL_THRESHOLD) {
+        wheelAccumulator = 0;
+        if (currentPageIndex > 0) {
+          goToPage(currentPageIndex - 1);
+        }
+      }
+    }, { passive: false });
+
+    // Touch Swipe Handling: Only active on desktop/large screens, NEVER block mobile thumb scrolling
+    let touchStartY = 0;
+    let touchStartX = 0;
+    let touchStartTime = 0;
+
+    window.addEventListener('touchstart', (e) => {
+      if (isMobileMode()) return;
+      if (e.touches.length > 0) {
+        touchStartY = e.touches[0].clientY;
+        touchStartX = e.touches[0].clientX;
+        touchStartTime = Date.now();
+      }
+    }, { passive: true });
+
+    window.addEventListener('touchend', (e) => {
+      if (isMobileMode()) return;
+      if (isPageScrolling) return;
+      if (e.changedTouches.length > 0) {
+        const touchEndY = e.changedTouches[0].clientY;
+        const touchEndX = e.changedTouches[0].clientX;
+        const deltaY = touchStartY - touchEndY;
+        const deltaX = touchStartX - touchEndX;
+        const duration = Date.now() - touchStartTime;
+
+        if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 38 && duration < 750) {
+          if (deltaY > 0 && currentPageIndex < pageIds.length - 1) {
+            goToPage(currentPageIndex + 1);
+          } else if (deltaY < 0 && currentPageIndex > 0) {
+            goToPage(currentPageIndex - 1);
+          }
+        }
+      }
+    }, { passive: true });
+
+    // Keyboard Navigation (Arrow keys, Space, PageUp/Down, Home/End)
+    window.addEventListener('keydown', (e) => {
+      const navKeys = ['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Space', 'Home', 'End'];
+      if (navKeys.includes(e.code)) {
+        if (e.target && e.target.matches('input, textarea, select, button')) return;
+        e.preventDefault();
+
+        if (isPageScrolling) return;
+
+        if (e.code === 'ArrowDown' || e.code === 'PageDown' || e.code === 'Space') {
+          if (currentPageIndex < pageIds.length - 1) goToPage(currentPageIndex + 1);
+        } else if (e.code === 'ArrowUp' || e.code === 'PageUp') {
+          if (currentPageIndex > 0) goToPage(currentPageIndex - 1);
+        } else if (e.code === 'Home') {
+          goToPage(0);
+        } else if (e.code === 'End') {
+          goToPage(pageIds.length - 1);
+        }
+      }
+    });
+
+    // Side Dot Indicators Click Event
+    scrollDots.forEach((dot) => {
+      dot.addEventListener('click', (e) => {
+        e.preventDefault();
+        const pageIdx = parseInt(dot.getAttribute('data-page'), 10);
+        if (!isNaN(pageIdx)) {
+          goToPage(pageIdx);
+        }
+      });
+    });
+
+    // Navigation and Anchor Click Interception
+    document.querySelectorAll('.holding-logo-brand').forEach(logo => {
+      logo.addEventListener('click', (e) => {
+        if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname === '') {
+          e.preventDefault();
+          goToPage(0);
+        }
+      });
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', (e) => {
+        const href = anchor.getAttribute('href');
+        if (href && href !== '#') {
+          const targetIndex = pageIds.indexOf(href);
+          if (targetIndex !== -1) {
+            e.preventDefault();
+            goToPage(targetIndex);
+          } else {
+            const targetEl = document.querySelector(href);
+            if (targetEl) {
+              e.preventDefault();
+              lenis ? lenis.scrollTo(targetEl, { duration: 1.15 }) : targetEl.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+        }
+      });
+    });
+
+    // Direct Hash On Load Support
+    if (window.location.hash) {
+      const initIdx = pageIds.indexOf(window.location.hash);
+      if (initIdx !== -1) {
+        setTimeout(() => goToPage(initIdx, true), 120);
+      }
+    }
+
+    // Auto-realign on Window Resize
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        const targetEl = document.querySelector(pageIds[currentPageIndex]);
+        if (targetEl && lenis) {
+          lenis.scrollTo(targetEl, { immediate: true });
+        }
+      }, 150);
+    });
+
+    // 4. GSAP ScrollTrigger Engine: Anti-Gravity Hero Scrub & Pinned Layered Showcase
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+
+      // (A) Anti-Gravity Parallax Scroll Engine
+      const heroTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '#hero-fullscreen',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1
+        }
+      });
+
+      // Background Anti-Gravity Canvas drifts slower (background depth)
+      heroTl.to('#anti-gravity-canvas', {
+        yPercent: -15,
+        opacity: 0.3,
+        ease: 'none'
+      }, 0);
+
+
+
+      // Minimalist hint fades out as user scrolls
+      heroTl.to('#hero-click-hint', {
+        yPercent: -35,
+        opacity: 0,
+        ease: 'none'
+      }, 0);
+
+      // (B) Elegant ScrollTriggers for the 3 Core Sections
+      // 1. Family Word Section
+      gsap.fromTo('#family-word .family-editorial-col',
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '#family-word',
+            start: 'top 75%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+      gsap.fromTo('#family-word .family-visual-col',
+        { y: 60, opacity: 0, scale: 0.96 },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 1.2,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '#family-word',
+            start: 'top 70%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+
+      // 2. Rental Company Section Reveal
+      gsap.fromTo('#rental-company .portal-info-box',
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '#rental-company',
+            start: 'top 75%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+      gsap.fromTo('#rental-company .circle-auto-badge',
+        { scale: 0.8, opacity: 0, rotate: -20 },
+        {
+          scale: 1,
+          opacity: 1,
+          rotate: 0,
+          duration: 1.2,
+          ease: 'back.out(1.4)',
+          scrollTrigger: {
+            trigger: '#rental-company',
+            start: 'top 70%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+
+      // 3. Real Estate Company Section Reveal
+      gsap.fromTo('#real-estate-company .portal-info-box',
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '#real-estate-company',
+            start: 'top 75%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+      gsap.fromTo('#real-estate-company .project-peek-card',
+        { y: 60, opacity: 0, stagger: 0.15 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '#real-estate-company',
+            start: 'top 70%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+    }
+
+    // 5. 3D Mouse Cursor Tracking ("Logo Looking at It") & Click Zoom
+    const heroFullscreen = document.getElementById('hero-fullscreen');
+    const stage = document.getElementById('hero-stage');
+    const emblem = document.getElementById('hero-emblem');
+    const ambientGlow = document.getElementById('hero-ambient-glow');
+    const shockwave = document.getElementById('hero-shockwave');
+
+    let mouseX = 0, mouseY = 0;
+    let currentRotX = 0, currentRotY = 0;
+    let isZoomed = false;
+
+    // Track mouse cursor relative to hero center
+    window.addEventListener('mousemove', (e) => {
+      if (!stage) return;
+      const rect = stage.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+
+      // Normalized coordinates from -1 to 1
+      mouseX = (e.clientX - centerX) / (window.innerWidth / 2);
+      mouseY = (e.clientY - centerY) / (window.innerHeight / 2);
+    });
+
+    // Silky smooth Lerp animation loop
+    function update3DLogo() {
+      // Calculate target rotation: emblem tilts directly toward the cursor ("looking at it")
+      const targetRotY = mouseX * 26; // Horizontal gaze
+      const targetRotX = -mouseY * 22; // Vertical gaze
+
+      currentRotX += (targetRotX - currentRotX) * 0.08;
+      currentRotY += (targetRotY - currentRotY) * 0.08;
+
+      const scale = isZoomed ? 1.34 : 1.0;
+      const idleFloatY = Math.sin(performance.now() * 0.0016) * 8.5;
+
+      if (emblem) {
+        emblem.style.transform = `perspective(1000px) translate3d(0, ${idleFloatY.toFixed(2)}px, 0) rotateX(${currentRotX.toFixed(2)}deg) rotateY(${currentRotY.toFixed(2)}deg) scale(${scale})`;
+      }
+
+      if (ambientGlow) {
+        ambientGlow.style.transform = `translate(calc(-50% + ${currentRotY * 3}px), calc(-50% + ${-currentRotX * 3}px))`;
+      }
+
+      requestAnimationFrame(update3DLogo);
+    }
+    requestAnimationFrame(update3DLogo);
+
+    // Click to make bigger
+    if (stage) {
+      stage.addEventListener('click', (e) => {
+        isZoomed = !isZoomed;
+        emblem.classList.toggle('is-zoomed', isZoomed);
+
+        // Trigger Shockwave Animation
+        if (shockwave) {
+          shockwave.classList.remove('active');
+          void shockwave.offsetWidth; // force reflow
+          shockwave.classList.add('active');
+        }
+      });
+    }
+
+    // 6. Physics-Based Anti-Gravity Floating Engine (Morphing Mesh & Levitation)
+    function initAntiGravityEngine() {
+      const canvas = document.getElementById('anti-gravity-canvas');
+      const hero = document.getElementById('hero-fullscreen');
+      if (!canvas || !hero) return;
+
+      const ctx = canvas.getContext('2d');
+      let width = 0, height = 0;
+      let dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      function resize() {
+        const rect = hero.getBoundingClientRect();
+        width = rect.width;
+        height = rect.height;
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        ctx.scale(dpr, dpr);
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      // Mouse tracking within hero
+      let mouseCanvasX = -1000, mouseCanvasY = -1000;
+      let lastMX = 0, lastMY = 0;
+
+      hero.addEventListener('mousemove', (e) => {
+        const rect = hero.getBoundingClientRect();
+        mouseCanvasX = e.clientX - rect.left;
+        mouseCanvasY = e.clientY - rect.top;
+      });
+
+      hero.addEventListener('mouseleave', () => {
+        mouseCanvasX = -1000;
+        mouseCanvasY = -1000;
+      });
+
+      // 48 Anti-Gravity Floating Shards & Micro-Particles
+      const particleCount = 48;
+      const particles = [];
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * (width || window.innerWidth),
+          y: Math.random() * (height || window.innerHeight),
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: -(0.35 + Math.random() * 0.75), // Zero-G upward buoyancy
+          size: 1.2 + Math.random() * 2.8,
+          alpha: 0.15 + Math.random() * 0.5,
+          baseAlpha: 0.15 + Math.random() * 0.5,
+          pulseOffset: Math.random() * Math.PI * 2,
+          isShard: Math.random() > 0.65
+        });
+      }
+
+      // Morphing Liquid Mesh Nodes (3 harmonic blobs)
+      const blobs = [
+        { cx: 0.35, cy: 0.45, r: 280, speedX: 0.7, speedY: 0.9, phase: 0 },
+        { cx: 0.65, cy: 0.40, r: 320, speedX: 0.8, speedY: 0.6, phase: 2.1 },
+        { cx: 0.50, cy: 0.60, r: 260, speedX: 0.6, speedY: 1.1, phase: 4.3 }
+      ];
+
+      let lastTime = performance.now();
+
+      function loop(now) {
+        const dt = Math.min((now - lastTime) * 0.001, 0.1);
+        lastTime = now;
+        const time = now * 0.001;
+
+        if (width <= 0 || height <= 0) {
+          requestAnimationFrame(loop);
+          return;
+        }
+
+        ctx.clearRect(0, 0, width, height);
+
+        // 1. Draw Morphing Liquid Gradient Mesh in Background
+        blobs.forEach((b) => {
+          const morphX = width * b.cx + Math.sin(time * b.speedX + b.phase) * (width * 0.08);
+          const morphY = height * b.cy + Math.cos(time * b.speedY + b.phase) * (height * 0.07);
+          const morphR = b.r + Math.sin(time * 1.5 + b.phase) * 35;
+
+          const grad = ctx.createRadialGradient(morphX, morphY, 0, morphX, morphY, morphR);
+          grad.addColorStop(0, 'rgba(255, 255, 255, 0.055)');
+          grad.addColorStop(0.5, 'rgba(180, 185, 200, 0.025)');
+          grad.addColorStop(1, 'transparent');
+
+          ctx.fillStyle = grad;
+          ctx.beginPath();
+          ctx.arc(morphX, morphY, morphR, 0, Math.PI * 2);
+          ctx.fill();
+        });
+
+        // 2. Simulate & Draw Anti-Gravity Floating Particles
+        particles.forEach((p) => {
+          // Zero-G upward buoyancy
+          p.vy -= 0.015;
+          if (p.vy < -1.4) p.vy = -1.4;
+
+          // Gentle lateral harmonic drift
+          p.vx += Math.sin(p.y * 0.008 + time) * 0.03;
+          p.vx *= 0.98;
+          p.vy *= 0.99;
+
+          // Mouse anti-gravity repulsion field
+          const dx = p.x - mouseCanvasX;
+          const dy = p.y - mouseCanvasY;
+          const dist = Math.hypot(dx, dy);
+          if (dist < 180 && dist > 1) {
+            const force = (1 - dist / 180) * 2.8;
+            p.vx += (dx / dist) * force;
+            p.vy += (dy / dist) * force;
+          }
+
+          p.x += p.vx;
+          p.y += p.vy;
+
+          // Wrap-around when drifting out of bounds
+          if (p.y < -20) {
+            p.y = height + 15;
+            p.x = Math.random() * width;
+            p.vy = -(0.3 + Math.random() * 0.6);
+          }
+          if (p.x < -20) p.x = width + 15;
+          if (p.x > width + 20) p.x = -15;
+
+          // Pulsing opacity
+          const currentAlpha = p.baseAlpha * (0.7 + Math.sin(time * 2 + p.pulseOffset) * 0.3);
+
+          ctx.fillStyle = `rgba(255, 255, 255, ${currentAlpha.toFixed(3)})`;
+          if (p.isShard) {
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate(time + p.pulseOffset);
+            ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+            ctx.restore();
+          } else {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        });
+
+        requestAnimationFrame(loop);
+      }
+      requestAnimationFrame(loop);
+    }
+    initAntiGravityEngine();
+
+    // 6. Interactive Contact Console Engine
+    const contactForm = document.getElementById('holding-contact-form');
+    const topicPills = document.querySelectorAll('#contact-topic-pills .topic-pill');
+    const topicInput = document.getElementById('contact-topic-input');
+    const channelChips = document.querySelectorAll('#contact-channel-options .channel-chip');
+    const channelInput = document.getElementById('contact-channel-input');
+    const successBox = document.getElementById('contact-success-box');
+    const successText = document.getElementById('success-custom-text');
+    const successWaAction = document.getElementById('success-wa-action');
+    const resetBtn = document.getElementById('btn-reset-contact');
+    const submitBtn = document.getElementById('btn-submit-contact');
+    const btnSubmitLabel = document.getElementById('btn-submit-label');
+
+    // Topic Selection Handler
+    topicPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        topicPills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        const topic = pill.getAttribute('data-topic');
+        if (topicInput) topicInput.value = topic;
+      });
+    });
+
+    // Channel Selection Handler
+    channelChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        channelChips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        const channel = chip.getAttribute('data-channel');
+        if (channelInput) channelInput.value = channel;
+      });
+    });
+
+    // Form Submission & Success State
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const nameInput = document.getElementById('contact-name');
+        const phoneInput = document.getElementById('contact-phone');
+        const emailInput = document.getElementById('contact-email');
+        const msgInput = document.getElementById('contact-message');
+
+        const name = nameInput ? nameInput.value.trim() : 'Client Privilégié';
+        const phone = phoneInput ? phoneInput.value.trim() : '';
+        const email = emailInput ? emailInput.value.trim() : '';
+        const message = msgInput ? msgInput.value.trim() : '';
+        const topic = topicInput ? topicInput.value : 'Immobilier';
+        const channel = channelInput ? channelInput.value : 'WhatsApp';
+
+        // Button sending animation
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.style.opacity = '0.7';
+          if (btnSubmitLabel) btnSubmitLabel.textContent = 'Transmission en cours...';
+        }
+
+        setTimeout(() => {
+          // Hide form, show success state
+          contactForm.style.display = 'none';
+          if (successBox) {
+            successBox.style.display = 'flex';
+            successBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+
+          if (successText) {
+            successText.textContent = `Merci ${name}. Votre demande concernant le pôle "${topic}" a été transmise en priorité. Notre direction générale à Tanger vous contactera via ${channel} sous un délai maximal de 2 heures ouvrées.`;
+          }
+
+          // Build dynamic WhatsApp prefilled message
+          if (successWaAction) {
+            const waMsg = encodeURIComponent(
+              `Bonjour Cabinet Asharq Al Awsat Group,\nJe suis ${name}.\nObjet: ${topic}\nTéléphone: ${phone}\nEmail: ${email}\nMessage: ${message}`
+            );
+            successWaAction.href = `https://wa.me/212600907262?text=${waMsg}`;
+          }
+
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = '1';
+            if (btnSubmitLabel) btnSubmitLabel.textContent = 'Transmettre au Cabinet';
+          }
+        }, 650);
+      });
+    }
+
+    // Reset Form
+    if (resetBtn && contactForm && successBox) {
+      resetBtn.addEventListener('click', () => {
+        contactForm.reset();
+        contactForm.style.display = 'flex';
+        successBox.style.display = 'none';
+        topicPills.forEach((p, idx) => p.classList.toggle('active', idx === 0));
+        channelChips.forEach((c, idx) => c.classList.toggle('active', idx === 0));
+        if (topicInput) topicInput.value = 'Immobilier';
+        if (channelInput) channelInput.value = 'WhatsApp';
+      });
+    }
+
+    // 7. Live Tanger Clock (GMT+1)
+    function updateTangerClock() {
+      const clockEl = document.getElementById('tanger-clock');
+      if (!clockEl) return;
+      try {
+        const now = new Date();
+        const options = { timeZone: 'Africa/Casablanca', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+        const timeStr = new Intl.DateTimeFormat('fr-FR', options).format(now);
+        clockEl.textContent = `${timeStr} (Tanger)`;
+      } catch(e) {
+        const d = new Date();
+        clockEl.textContent = d.toTimeString().split(' ')[0] + ' (Tanger)';
+      }
+    }
+    updateTangerClock();
+    setInterval(updateTangerClock, 1000);
+  </script>
+
+  <!-- Secret Easter Egg HUD Badge: Revealed when the 3D Chess Base is Inspected -->
+  <div id="secret-easter-egg-pill" class="secret-easter-egg-pill" aria-live="polite">
+    <div class="secret-easter-egg-icon">✦</div>
+    <div class="secret-easter-egg-text">
+      <span class="secret-easter-egg-title">Conception &amp; Direction Artistique</span>
+      <span class="secret-easter-egg-sub">Adam Doukali • Digital Architect &amp; Designer</span>
+    </div>
+  </div>
+
+  <!-- SCFO Real-Time 3D Knight & Luminous Emblem Scene Engine -->
+  <script src="js/scfo-knight-scene.js"></script>
+</body>
+</html>
+

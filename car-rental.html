@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asharq Al Awsat Group | Pôle Mobilité & Location de Voitures de Prestige</title>
+  <meta name="description" content="Asharq Mobility — Flotte de véhicules de luxe, SUV d'exception et services de chauffeur privé à Tanger et aéroport Ibn Battouta.">
+  <link rel="icon" type="image/png" href="assets/emblem_gold.png">
+  <link rel="stylesheet" href="styles/theme.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <style>
+    .fleet-hero {
+      position: relative;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 24px 60px;
+      overflow: hidden;
+    }
+    .fleet-hero .hero-backdrop {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.65);
+      transform: scale(1.04);
+      z-index: 1;
+    }
+    .fleet-hero .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(14, 16, 20, 0.6) 0%, rgba(14, 16, 20, 0.85) 100%);
+      z-index: 2;
+    }
+    .fleet-hero .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 36px 32px;
+      border-radius: 24px;
+      background: rgba(14, 16, 20, 0.82);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+    }
+    .fleet-hero .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 18px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: var(--gold-light, #DFBF7A);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .fleet-hero .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: #FFFFFF !important;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+    .fleet-hero .hero-title em {
+      font-style: italic;
+      color: #E2C285 !important;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.6);
+    }
+    .fleet-hero .hero-description {
+      color: rgba(255, 255, 255, 0.88) !important;
+      max-width: 680px;
+      margin: 14px auto 0;
+      font-size: 1.02rem;
+      line-height: 1.6;
+    }
+    .fleet-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      max-width: 1400px;
+      margin: 40px auto 100px;
+      padding: 0 24px;
+    }
+    .fleet-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition-smooth);
+    }
+    .fleet-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--border-gold);
+    }
+    .fleet-card-img {
+      aspect-ratio: 16 / 10;
+      width: 100%;
+      object-fit: cover;
+    }
+    .fleet-card-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+      justify-content: space-between;
+    }
+    @media (max-width: 992px) {
+      .fleet-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 768px) {
+      .header-container {
+        padding: 10px 14px !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+      }
+      .brand-center-logo .logo-img {
+        height: 42px !important;
+      }
+      .control-pills {
+        display: none !important;
+      }
+      .btn-portal-switch {
+        padding: 8px 14px !important;
+        font-size: 0.75rem !important;
+        white-space: nowrap !important;
+      }
+      .fleet-hero {
+        padding: 100px 14px 40px !important;
+        min-height: auto !important;
+      }
+      .fleet-hero .hero-content {
+        padding: 22px 16px !important;
+        border-radius: 20px !important;
+      }
+      .fleet-hero .hero-title {
+        font-size: 1.85rem !important;
+      }
+      .fleet-hero .hero-description {
+        font-size: 0.9rem !important;
+      }
+      .fleet-grid {
+        padding: 0 14px !important;
+        gap: 20px !important;
+        margin: 24px auto 60px !important;
+      }
+      .fleet-card-body {
+        padding: 20px 16px !important;
+      }
+      .fleet-card h3 {
+        font-size: 1.25rem !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Atmos Boot Loader -->
+  <div id="boot-loader" aria-hidden="true">
+    <div class="loader-inner">
+      <div class="loader-row">
+        <div class="loader-brand">
+          <img src="assets/emblem_gold.png" alt="Asharq Emblem" class="loader-emblem">
+          <span class="loader-title">Asharq Group</span>
+        </div>
+        <div class="loader-count">00</div>
+      </div>
+      <div class="loader-track">
+        <div class="loader-bar"></div>
+      </div>
+      <p class="loader-tagline">Mobilité d'Exception & Flotte Prestige • Tanger, Maroc</p>
+    </div>
+  </div>
+
+  <!-- Master Site Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <nav class="nav-left">
+        <a href="index.html" class="nav-link" style="display: inline-flex; align-items: center; gap: 6px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Holding</span>
+        </a>
+        <a href="real-estate.html" class="nav-link">Pôle Immobilier</a>
+        <a href="#flotte" class="nav-link active">Notre Flotte</a>
+        <a href="#services" class="nav-link">Services VIP</a>
+      </nav>
+
+      <a href="index.html" class="brand-center-logo" aria-label="Asharq Al Awsat Group">
+        <img src="assets/logo_dark.png" alt="Asharq Al Awsat Group" class="logo-img">
+        <span class="brand-text">Mobility</span>
+      </a>
+
+      <div class="nav-right">
+        <div class="control-pills">
+          <button type="button" class="btn-pill" data-theme-btn="light">☀️ Jour</button>
+          <button type="button" class="btn-pill active" data-theme-btn="dark">🌙 Nuit</button>
+        </div>
+        <a href="https://wa.me/212600907262?text=Bonjour,%20je%20souhaite%20réserver%20un%20véhicule%20prestige" target="_blank" class="btn-portal-switch">
+          <span>Réservation VIP</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="fleet-hero">
+      <div class="hero-backdrop" style="background-image: url('assets/fleet.jpg');"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span>Conciergerie Automobile • Tanger & Maroc</span>
+        </div>
+        <h1 class="hero-title">
+          L'Excellence du Voyage en <em>Toute Sérénité</em>
+        </h1>
+        <p class="hero-description">
+          Une flotte de véhicules de prestige pour vos déplacements professionnels, réceptions privées et escapades sur la côte méditerranéenne. Service avec ou sans chauffeur.
+        </p>
+      </div>
+    </section>
+
+    <!-- Fleet Grid -->
+    <section id="flotte" style="max-width: 1400px; margin: 0 auto; padding: 40px 24px 0;">
+      <div style="text-align: center; max-width: 650px; margin: 0 auto 32px;">
+        <span class="section-tag">Sélection Exclusive</span>
+        <h2 class="section-heading">Véhicules Disponibles à Tanger</h2>
+      </div>
+
+      <div class="fleet-grid">
+        <!-- Car 1 -->
+        <article class="fleet-card">
+          <img src="assets/fleet.jpg" alt="Mercedes-Benz S-Class" class="fleet-card-img">
+          <div class="fleet-card-body">
+            <div>
+              <span style="font-size: 0.75rem; color: var(--gold-primary); text-transform: uppercase; font-weight: 600;">Berline Première Classe</span>
+              <h3 style="font-family: var(--font-serif); font-size: 1.4rem; margin-top: 4px;">Mercedes-Benz Classe S</h3>
+              <p style="color: var(--text-secondary); font-size: 0.88rem; margin-top: 6px;">
+                Confort souverain, insonorisation acoustique absolue et chauffeur bilingue dédié sur demande.
+              </p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-subtle); padding-top: 16px;">
+              <span style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Sur Devis Privé</span>
+              <a href="https://wa.me/212600907262?text=Bonjour,%20réservation%20Mercedes%20Classe%20S" target="_blank" class="btn-primary" style="padding: 10px 18px; font-size: 0.8rem;">
+                Réserver
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Car 2 -->
+        <article class="fleet-card">
+          <img src="assets/fleet.jpg" alt="Range Rover Autobiography" class="fleet-card-img">
+          <div class="fleet-card-body">
+            <div>
+              <span style="font-size: 0.75rem; color: var(--gold-primary); text-transform: uppercase; font-weight: 600;">SUV de Luxe</span>
+              <h3 style="font-family: var(--font-serif); font-size: 1.4rem; margin-top: 4px;">Range Rover Autobiography</h3>
+              <p style="color: var(--text-secondary); font-size: 0.88rem; margin-top: 6px;">
+                Le summum du raffinement tout-terrain pour explorer le Nord du Maroc et les côtes atlantiques.
+              </p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-subtle); padding-top: 16px;">
+              <span style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Sur Devis Privé</span>
+              <a href="https://wa.me/212600907262?text=Bonjour,%20réservation%20Range%20Rover" target="_blank" class="btn-primary" style="padding: 10px 18px; font-size: 0.8rem;">
+                Réserver
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Car 3 -->
+        <article class="fleet-card">
+          <img src="assets/fleet.jpg" alt="Porsche Panamera" class="fleet-card-img">
+          <div class="fleet-card-body">
+            <div>
+              <span style="font-size: 0.75rem; color: var(--gold-primary); text-transform: uppercase; font-weight: 600;">Grand Tourisme Sport</span>
+              <h3 style="font-family: var(--font-serif); font-size: 1.4rem; margin-top: 4px;">Porsche Panamera</h3>
+              <p style="color: var(--text-secondary); font-size: 0.88rem; margin-top: 6px;">
+                Dynamisme électrisant et élégance intemporelle pour un séjour inoubliable sur les routes de Tanger.
+              </p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-subtle); padding-top: 16px;">
+              <span style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Sur Devis Privé</span>
+              <a href="https://wa.me/212600907262?text=Bonjour,%20réservation%20Porsche%20Panamera" target="_blank" class="btn-primary" style="padding: 10px 18px; font-size: 0.8rem;">
+                Réserver
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand-col">
+        <img src="assets/logo_dark.png" alt="Asharq Al Awsat Group" class="footer-logo-img">
+        <p style="color: var(--text-secondary); font-size: 0.9rem;">
+          Pôle Mobilité du Groupe Asharq Al Awsat • Tanger, Maroc.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Navigation</h4>
+        <ul class="footer-nav-list">
+          <li><a href="index.html">Portail Holding</a></li>
+          <li><a href="real-estate.html">Pôle Immobilier</a></li>
+          <li><a href="#flotte">Flotte Disponible</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Services VIP</h4>
+        <ul class="footer-nav-list">
+          <li>Transfert Aéroport Tanger</li>
+          <li>Mise à Disposition Chauffeur</li>
+          <li>Conciergerie Privée</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Réservations</h4>
+        <ul class="footer-nav-list">
+          <li>+212 600 907 262</li>
+          <li>+212 665 877 177</li>
+          <li>WhatsApp 24/7</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom-row">
+      <div>© 2026 Asharq Al Awsat Group • Pôle Mobilité.</div>
+      <div>Excellence Automobile • Tanger, Maroc</div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
