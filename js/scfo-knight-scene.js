@@ -314,89 +314,165 @@
       ctx.arc(cx, cy, 302, 0, Math.PI * 2);
       ctx.stroke();
 
-      // Fine Sunburst Rays in Center
-      ctx.strokeStyle = 'rgba(196, 35, 64, 0.22)';
-      ctx.lineWidth = 1.5;
-      for (let i = 0; i < 48; i++) {
-        const a = (i / 48) * Math.PI * 2;
+      function drawMedallionCenter(logoImage) {
+        ctx.save();
         ctx.beginPath();
-        ctx.moveTo(cx + Math.cos(a) * 85, cy + Math.sin(a) * 85);
-        ctx.lineTo(cx + Math.cos(a) * 290, cy + Math.sin(a) * 290);
+        ctx.arc(cx, cy, 298, 0, Math.PI * 2);
+        ctx.clip();
+
+        // Dark rich burgundy radial fill
+        const centerFill = ctx.createRadialGradient(cx, cy, 20, cx, cy, 298);
+        centerFill.addColorStop(0, '#2b0912');
+        centerFill.addColorStop(0.65, '#150307');
+        centerFill.addColorStop(1, '#0a0103');
+        ctx.fillStyle = centerFill;
+        ctx.fill();
+
+        // Redraw Sunburst Rays
+        ctx.strokeStyle = 'rgba(196, 35, 64, 0.24)';
+        ctx.lineWidth = 1.5;
+        for (let i = 0; i < 48; i++) {
+          const a = (i / 48) * Math.PI * 2;
+          ctx.beginPath();
+          ctx.moveTo(cx + Math.cos(a) * 65, cy + Math.sin(a) * 65);
+          ctx.lineTo(cx + Math.cos(a) * 285, cy + Math.sin(a) * 285);
+          ctx.stroke();
+        }
+
+        // Medallion Ambient Glow
+        const logoGlow = ctx.createRadialGradient(cx, cy - 90, 10, cx, cy - 90, 160);
+        logoGlow.addColorStop(0, 'rgba(196, 35, 64, 0.50)');
+        logoGlow.addColorStop(0.5, 'rgba(158, 27, 50, 0.22)');
+        logoGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        ctx.fillStyle = logoGlow;
+        ctx.beginPath();
+        ctx.arc(cx, cy - 90, 160, 0, Math.PI * 2);
+        ctx.fill();
+
+        // If official ClaroDigi brand logo loaded, render it
+        if (logoImage && logoImage.complete && logoImage.naturalWidth > 0) {
+          const logoW = 140;
+          const logoH = 134;
+          ctx.save();
+          ctx.shadowColor = 'rgba(196, 35, 64, 0.95)';
+          ctx.shadowBlur = 28;
+          ctx.drawImage(logoImage, cx - logoW / 2, cy - 165, logoW, logoH);
+          ctx.restore();
+        } else {
+          // Fallback monogram
+          ctx.save();
+          ctx.font = 'bold 88px "Cinzel", "Playfair Display", serif';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillStyle = burgundyGrad;
+          ctx.shadowColor = 'rgba(196, 35, 64, 0.85)';
+          ctx.shadowBlur = 24;
+          ctx.fillText('CD', cx, cy - 95);
+          ctx.restore();
+        }
+
+        // Divider Line with diamond
+        ctx.strokeStyle = burgundyGrad;
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(cx - 160, cy - 15);
+        ctx.lineTo(cx + 160, cy - 15);
         ctx.stroke();
+
+        ctx.fillStyle = '#f5bac5';
+        ctx.font = '14px serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('◆', cx, cy - 15);
+
+        // Prominent Title: "CLARODIG"
+        ctx.save();
+        ctx.font = '900 52px "Plus Jakarta Sans", sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = '#FFFFFF';
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.95)';
+        ctx.shadowBlur = 14;
+        ctx.fillText('CLARODIG', cx, cy + 32);
+        ctx.restore();
+
+        // Subtitle: "DESIGNED BY ADAM DOUKALI"
+        ctx.save();
+        ctx.font = 'bold 21px "Plus Jakarta Sans", sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = '#f5bac5';
+        ctx.fillText('DESIGNED BY ADAM DOUKALI', cx, cy + 78);
+        ctx.restore();
+
+        // Clickable Pill Button on 3D Base: "CLARODIGI.COM ↗"
+        const btnW = 280;
+        const btnH = 44;
+        const btnX = cx - btnW / 2;
+        const btnY = cy + 112;
+        const r = 22;
+        ctx.save();
+        ctx.fillStyle = 'rgba(158, 27, 50, 0.70)';
+        ctx.strokeStyle = '#c42340';
+        ctx.lineWidth = 2;
+        ctx.shadowColor = 'rgba(196, 35, 64, 0.75)';
+        ctx.shadowBlur = 18;
+        ctx.beginPath();
+        ctx.moveTo(btnX + r, btnY);
+        ctx.lineTo(btnX + btnW - r, btnY);
+        ctx.arcTo(btnX + btnW, btnY, btnX + btnW, btnY + r, r);
+        ctx.lineTo(btnX + btnW, btnY + btnH - r);
+        ctx.arcTo(btnX + btnW, btnY + btnH, btnX + btnW - r, btnY + btnH, r);
+        ctx.lineTo(btnX + r, btnY + btnH);
+        ctx.arcTo(btnX, btnY + btnH, btnX, btnY + btnH - r, r);
+        ctx.lineTo(btnX, btnY + r);
+        ctx.arcTo(btnX, btnY, btnX + r, btnY, r);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.font = '800 20px "Plus Jakarta Sans", sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = '#FFFFFF';
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.9)';
+        ctx.shadowBlur = 6;
+        ctx.fillText('CLARODIGI.COM  ↗', cx, btnY + btnH / 2);
+        ctx.restore();
+
+        // Secret Seal Badge
+        ctx.save();
+        ctx.font = '700 14px "Plus Jakarta Sans", monospace';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = 'rgba(245, 186, 197, 0.92)';
+        ctx.fillText('✦ OFFICIAL CREATIVE DIGITAL SEAL ✦', cx, cy + 182);
+        ctx.restore();
+
+        // Bottom Stars
+        ctx.font = '18px serif';
+        ctx.fillStyle = '#c42340';
+        ctx.textAlign = 'center';
+        ctx.fillText('★   ★   ★', cx, cy + 218);
+
+        ctx.restore();
       }
 
-      // Crown / Stars
-      ctx.fillStyle = '#f5bac5';
-      ctx.font = '26px serif';
-      ctx.textAlign = 'center';
-      ctx.fillText('✦   ◆   ✦', cx, cy - 180);
-
-      // Monogram Crest: "CD" (ClaroDiG)
-      ctx.save();
-      ctx.font = 'bold 96px "Cinzel", "Playfair Display", "Times New Roman", serif';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillStyle = burgundyGrad;
-      ctx.shadowColor = 'rgba(196, 35, 64, 0.85)';
-      ctx.shadowBlur = 24;
-      ctx.fillText('CD', cx, cy - 90);
-      ctx.restore();
-
-      // Divider Line
-      ctx.strokeStyle = burgundyGrad;
-      ctx.lineWidth = 2.5;
-      ctx.beginPath();
-      ctx.moveTo(cx - 160, cy - 25);
-      ctx.lineTo(cx + 160, cy - 25);
-      ctx.stroke();
-
-      // Prominent Title: "CLARODIG"
-      ctx.save();
-      ctx.font = '900 54px "Plus Jakarta Sans", sans-serif';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillStyle = '#FFFFFF';
-      ctx.shadowColor = 'rgba(0, 0, 0, 0.95)';
-      ctx.shadowBlur = 12;
-      ctx.fillText('CLARODIG', cx, cy + 24);
-      ctx.restore();
-
-      // Subtitle: "DESIGNED BY ADAM DOUKALI"
-      ctx.save();
-      ctx.font = 'bold 22px "Plus Jakarta Sans", sans-serif';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillStyle = '#f5bac5';
-      ctx.fillText('DESIGNED BY ADAM DOUKALI', cx, cy + 74);
-      ctx.restore();
-
-      // Official URL: "CLARODIGI.COM"
-      ctx.save();
-      ctx.font = '800 20px "Plus Jakarta Sans", monospace';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillStyle = '#c42340';
-      ctx.fillText('CLARODIGI.COM', cx, cy + 114);
-      ctx.restore();
-
-      // Secret Seal Badge
-      ctx.save();
-      ctx.font = '700 15px "Plus Jakarta Sans", monospace';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillStyle = 'rgba(245, 186, 197, 0.90)';
-      ctx.fillText('✦ OFFICIAL CREATIVE DIGITAL SEAL ✦', cx, cy + 165);
-      ctx.restore();
-
-      // Bottom Stars
-      ctx.font = '20px serif';
-      ctx.fillStyle = '#c42340';
-      ctx.textAlign = 'center';
-      ctx.fillText('★   ★   ★', cx, cy + 205);
+      drawMedallionCenter(null);
 
       const texture = new THREE.CanvasTexture(canvas);
       texture.encoding = THREE.sRGBEncoding;
       texture.anisotropy = 8;
+
+      // Asynchronously load official ClaroDigi brand logo
+      const logoImg = new Image();
+      logoImg.crossOrigin = 'anonymous';
+      logoImg.onload = () => {
+        drawMedallionCenter(logoImg);
+        texture.needsUpdate = true;
+      };
+      logoImg.src = 'assets/clarodigi/favicon-tight.png';
+
       return texture;
     }
 
@@ -567,9 +643,17 @@
       }
     });
 
+    // Click & Drag Detection for 3D Knight & Clickable Seal
+    let clickStartX = 0;
+    let clickStartY = 0;
+    let clickStartTime = 0;
+    let isSealFacingCamera = false;
+
     // Drag start
     window.addEventListener('mousedown', (e) => {
-      // Only drag if clicking on canvas or hero section
+      clickStartX = e.clientX;
+      clickStartY = e.clientY;
+      clickStartTime = performance.now();
       if (e.target.closest('#hero-fullscreen') || e.target.closest('#scfo-3d-container') || e.target === canvas) {
         state.isDragging = true;
         state.dragStartX = e.clientX;
@@ -578,17 +662,47 @@
       }
     });
 
-    window.addEventListener('mouseup', () => {
+    window.addEventListener('mouseup', (e) => {
+      const clickDist = Math.hypot(e.clientX - clickStartX, e.clientY - clickStartY);
+      const clickDuration = performance.now() - clickStartTime;
+
       if (state.isDragging) {
         state.isDragging = false;
-        canvas.style.cursor = 'grab';
+        canvas.style.cursor = isSealFacingCamera ? 'pointer' : 'grab';
+      }
+
+      // If clicked without dragging while secret seal is facing camera -> Redirect to CLARODIGI.COM!
+      if (clickDist < 8 && clickDuration < 450 && isSealFacingCamera) {
+        if (e.target.closest('#hero-fullscreen') || e.target.closest('#scfo-3d-container') || e.target === canvas) {
+          window.open('https://clarodigi.com', '_blank', 'noopener,noreferrer');
+        }
       }
     });
 
-    // Touch support for mobile dragging
+    // Hover cursor feedback when secret seal is revealed
+    window.addEventListener('mousemove', (e) => {
+      if (!state.isDragging) {
+        if (isSealFacingCamera && (e.target === canvas || e.target.closest('#hero-fullscreen'))) {
+          canvas.style.cursor = 'pointer';
+          canvas.title = 'Visiter CLARODIGI.COM (Made by ClaroDiG)';
+        } else if (!state.isDragging) {
+          canvas.style.cursor = 'grab';
+          canvas.title = '';
+        }
+      }
+    }, { passive: true });
+
+    // Touch support for mobile dragging & tap redirection
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchStartTime = 0;
+
     window.addEventListener('touchstart', (e) => {
       if (e.touches.length > 0) {
         const t = e.touches[0];
+        touchStartX = t.clientX;
+        touchStartY = t.clientY;
+        touchStartTime = performance.now();
         if (e.target.closest('#hero-fullscreen') || e.target.closest('#scfo-3d-container') || e.target === canvas) {
           state.isDragging = true;
           state.dragStartX = t.clientX;
@@ -616,8 +730,16 @@
       }
     }, { passive: true });
 
-    window.addEventListener('touchend', () => {
+    window.addEventListener('touchend', (e) => {
       state.isDragging = false;
+      if (e.changedTouches && e.changedTouches.length > 0) {
+        const t = e.changedTouches[0];
+        const dist = Math.hypot(t.clientX - touchStartX, t.clientY - touchStartY);
+        const duration = performance.now() - touchStartTime;
+        if (dist < 12 && duration < 400 && isSealFacingCamera) {
+          window.open('https://clarodigi.com', '_blank', 'noopener,noreferrer');
+        }
+      }
     }, { passive: true });
 
     // Double-click or programmatic trigger: Smooth inspection flip to reveal secret seal
@@ -650,6 +772,7 @@
       });
     }
     window.__inspectSecretSeal = inspectSecretSeal;
+    window.__scfoState = state;
 
     window.addEventListener('dblclick', (e) => {
       if (e.target.closest('#hero-fullscreen') || e.target.closest('#scfo-3d-container') || e.target === canvas) {
@@ -865,10 +988,11 @@
         knightPivot.scale.setScalar(state.currentScale);
 
         // Check if secret seal on base is facing the camera
+        const sealNormal = new THREE.Vector3(0, -1, 0).applyEuler(knightPivot.rotation);
+        isSealFacingCamera = (sealNormal.z > 0.35 || isInspectingSeal);
         const easterEggPill = document.getElementById('secret-easter-egg-pill');
         if (easterEggPill) {
-          const sealNormal = new THREE.Vector3(0, -1, 0).applyEuler(knightPivot.rotation);
-          if (sealNormal.z > 0.35 || isInspectingSeal) {
+          if (isSealFacingCamera) {
             easterEggPill.classList.add('visible');
           } else if (!state.isDragging && !isInspectingSeal) {
             easterEggPill.classList.remove('visible');

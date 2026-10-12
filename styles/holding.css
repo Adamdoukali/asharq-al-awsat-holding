@@ -2428,7 +2428,7 @@ body {
 }
 
 /* ==========================================================================
-   Secret Easter Egg: Adam Doukali Designer Seal Notification
+   Secret Easter Egg: ClaroDiG & Adam Doukali Designer Seal Notification
    ========================================================================== */
 .secret-easter-egg-pill {
   position: fixed;
@@ -2438,9 +2438,9 @@ body {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 12px 24px;
+  padding: 10px 22px;
   border-radius: 9999px;
-  background: rgba(10, 12, 16, 0.92);
+  background: rgba(10, 12, 16, 0.94);
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
   border: 1px solid rgba(196, 35, 64, 0.55);
@@ -2450,7 +2450,9 @@ body {
   opacity: 0;
   transform: translateY(24px) scale(0.94);
   pointer-events: none;
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .secret-easter-egg-pill.visible {
@@ -2459,19 +2461,32 @@ body {
   pointer-events: auto;
 }
 
+.secret-easter-egg-pill:hover {
+  transform: translateY(-3px) scale(1.02);
+  border-color: rgba(245, 186, 197, 0.90);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 32px rgba(196, 35, 64, 0.70);
+}
+
 .secret-easter-egg-icon {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #f5bac5, #c42340, #5a0710);
-  color: #FFFFFF;
-  font-weight: 800;
-  font-size: 0.85rem;
+  background: linear-gradient(135deg, #24080f, #c42340, #5a0710);
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 0 14px rgba(196, 35, 64, 0.65);
+  border: 1px solid rgba(245, 186, 197, 0.45);
   flex-shrink: 0;
+  padding: 5px;
+  overflow: hidden;
+}
+
+.secret-easter-egg-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 .secret-easter-egg-text {
@@ -2490,14 +2505,25 @@ body {
 .secret-easter-egg-sub {
   font-size: 0.74rem;
   color: #f5bac5;
-  letter-spacing: 0.3px;
-  text-decoration: none;
-  font-weight: 600;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   transition: color 0.2s ease;
 }
 
-.secret-easter-egg-sub:hover {
+.secret-easter-egg-pill:hover .secret-easter-egg-sub {
   color: #ffffff;
-  text-decoration: underline;
 }
+
+.secret-easter-egg-arrow {
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+
+.secret-easter-egg-pill:hover .secret-easter-egg-arrow {
+  transform: translate(2px, -2px);
+}
+
 
