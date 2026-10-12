@@ -482,11 +482,11 @@
     const getHeroPlacement = () => {
       if (isMobileDevice()) {
         return {
-          posX: 0.20,
-          posY: 0.46,
-          scale: 0.72,
-          emblemX: -0.06,
-          emblemY: 0.50,
+          posX: 0.0,
+          posY: 0.52,
+          scale: 0.68,
+          emblemX: 0.0,
+          emblemY: 0.52,
           emblemOpacity: 0.95
         };
       }
