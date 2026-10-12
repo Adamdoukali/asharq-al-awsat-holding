@@ -362,8 +362,8 @@ body {
 }
 
 .dot-gold {
-  background: #D4AF37;
-  box-shadow: 0 0 6px rgba(212, 175, 55, 0.7);
+  background: #C42340;
+  box-shadow: 0 0 8px rgba(196, 35, 64, 0.8);
 }
 
 .dot-marble {
@@ -2443,8 +2443,8 @@ body {
   background: rgba(10, 12, 16, 0.92);
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
-  border: 1px solid rgba(212, 175, 55, 0.45);
-  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.75), 0 0 24px rgba(212, 175, 55, 0.25);
+  border: 1px solid rgba(196, 35, 64, 0.55);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.75), 0 0 24px rgba(158, 27, 50, 0.40);
   color: #FFFFFF;
   font-family: 'Plus Jakarta Sans', sans-serif;
   opacity: 0;
@@ -2463,14 +2463,14 @@ body {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #f9e7b9, #d4af37, #946e0a);
-  color: #0c0e12;
+  background: linear-gradient(135deg, #f5bac5, #c42340, #5a0710);
+  color: #FFFFFF;
   font-weight: 800;
   font-size: 0.85rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
+  box-shadow: 0 0 14px rgba(196, 35, 64, 0.65);
   flex-shrink: 0;
 }
 
@@ -2482,14 +2482,22 @@ body {
 
 .secret-easter-egg-title {
   font-weight: 700;
-  color: #f7e7c4;
+  color: #FFFFFF;
   font-size: 0.84rem;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.3px;
 }
 
 .secret-easter-egg-sub {
-  font-size: 0.72rem;
-  color: rgba(255, 255, 255, 0.65);
-  letter-spacing: 0.2px;
+  font-size: 0.74rem;
+  color: #f5bac5;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.secret-easter-egg-sub:hover {
+  color: #ffffff;
+  text-decoration: underline;
 }
 

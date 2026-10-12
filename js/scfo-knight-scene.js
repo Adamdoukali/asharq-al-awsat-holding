@@ -190,38 +190,38 @@
       const cx = 512;
       const cy = 512;
 
-      // 1. Deep Obsidian Base Disc
+      // 1. Deep Imperial Burgundy Base Disc
       const bgGrad = ctx.createRadialGradient(cx, cy, 40, cx, cy, 510);
-      bgGrad.addColorStop(0, '#1c1f26');
-      bgGrad.addColorStop(0.55, '#0e1116');
-      bgGrad.addColorStop(1, '#050608');
+      bgGrad.addColorStop(0, '#24080f');
+      bgGrad.addColorStop(0.55, '#120306');
+      bgGrad.addColorStop(1, '#050102');
       ctx.fillStyle = bgGrad;
       ctx.beginPath();
       ctx.arc(cx, cy, 510, 0, Math.PI * 2);
       ctx.fill();
 
-      // 2. 24K Gold Gradients
-      const goldGrad = ctx.createLinearGradient(120, 120, 900, 900);
-      goldGrad.addColorStop(0, '#fff2c9');
-      goldGrad.addColorStop(0.25, '#d4af37');
-      goldGrad.addColorStop(0.5, '#996f0a');
-      goldGrad.addColorStop(0.75, '#f7df99');
-      goldGrad.addColorStop(1, '#b88914');
+      // 2. Royal Burgundy & Rose-Platinum Gradients
+      const burgundyGrad = ctx.createLinearGradient(120, 120, 900, 900);
+      burgundyGrad.addColorStop(0, '#f5bac5');
+      burgundyGrad.addColorStop(0.25, '#c42340');
+      burgundyGrad.addColorStop(0.5, '#7d0e1e');
+      burgundyGrad.addColorStop(0.75, '#9e1b32');
+      burgundyGrad.addColorStop(1, '#4a050d');
 
-      const goldShine = ctx.createLinearGradient(0, 0, 1024, 0);
-      goldShine.addColorStop(0, '#d4af37');
-      goldShine.addColorStop(0.5, '#fff5d6');
-      goldShine.addColorStop(1, '#aa7c11');
+      const burgundyShine = ctx.createLinearGradient(0, 0, 1024, 0);
+      burgundyShine.addColorStop(0, '#c42340');
+      burgundyShine.addColorStop(0.5, '#ffe6ec');
+      burgundyShine.addColorStop(1, '#6b0b17');
 
       // Outer Solid Bezel Ring
-      ctx.strokeStyle = goldGrad;
+      ctx.strokeStyle = burgundyGrad;
       ctx.lineWidth = 12;
       ctx.beginPath();
       ctx.arc(cx, cy, 492, 0, Math.PI * 2);
       ctx.stroke();
 
       // Milled Guilloché Teeth (144 notches)
-      ctx.strokeStyle = 'rgba(212, 175, 55, 0.45)';
+      ctx.strokeStyle = 'rgba(196, 35, 64, 0.55)';
       ctx.lineWidth = 2.5;
       const teethCount = 144;
       for (let i = 0; i < teethCount; i++) {
@@ -232,15 +232,15 @@
         ctx.stroke();
       }
 
-      // High-Polish Gold Ring
-      ctx.strokeStyle = goldShine;
+      // High-Polish Burgundy Ring
+      ctx.strokeStyle = burgundyShine;
       ctx.lineWidth = 5;
       ctx.beginPath();
       ctx.arc(cx, cy, 458, 0, Math.PI * 2);
       ctx.stroke();
 
-      // Dotted Pearl Ring (96 pearls)
-      ctx.fillStyle = '#f5e6c8';
+      // Dotted Rose Pearl Ring (96 pearls)
+      ctx.fillStyle = '#fad2dc';
       const pearlCount = 96;
       for (let i = 0; i < pearlCount; i++) {
         const a = (i / pearlCount) * Math.PI * 2;
@@ -250,7 +250,7 @@
       }
 
       // Inner Border Ring for Text Track
-      ctx.strokeStyle = 'rgba(212, 175, 55, 0.65)';
+      ctx.strokeStyle = 'rgba(196, 35, 64, 0.70)';
       ctx.lineWidth = 2.5;
       ctx.beginPath();
       ctx.arc(cx, cy, 418, 0, Math.PI * 2);
@@ -263,7 +263,7 @@
 
       // Arc Typography: Top Arc (reads clockwise left-to-right at top)
       ctx.font = 'bold 26px "Plus Jakarta Sans", sans-serif';
-      ctx.fillStyle = goldShine;
+      ctx.fillStyle = burgundyShine;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
 
@@ -304,18 +304,18 @@
         });
       }
 
-      drawTopArc('★ CONCEPTION & DIRECTION ARTISTIQUE ★', 368, 0.046);
-      drawBottomArc('★ DIGITAL ARCHITECT & DESIGNER ★', 368, 0.048);
+      drawTopArc('★ MADE BY CLARODIG ★ CLARODIGI.COM ★', 368, 0.045);
+      drawBottomArc('★ DESIGNED BY ADAM DOUKALI ★ 2026 ★', 368, 0.046);
 
       // Inner Medallion Circle
-      ctx.strokeStyle = goldGrad;
+      ctx.strokeStyle = burgundyGrad;
       ctx.lineWidth = 4;
       ctx.beginPath();
       ctx.arc(cx, cy, 302, 0, Math.PI * 2);
       ctx.stroke();
 
       // Fine Sunburst Rays in Center
-      ctx.strokeStyle = 'rgba(212, 175, 55, 0.15)';
+      ctx.strokeStyle = 'rgba(196, 35, 64, 0.22)';
       ctx.lineWidth = 1.5;
       for (let i = 0; i < 48; i++) {
         const a = (i / 48) * Math.PI * 2;
@@ -326,57 +326,57 @@
       }
 
       // Crown / Stars
-      ctx.fillStyle = '#f9e7b9';
+      ctx.fillStyle = '#f5bac5';
       ctx.font = '26px serif';
       ctx.textAlign = 'center';
       ctx.fillText('✦   ◆   ✦', cx, cy - 180);
 
-      // Monogram Crest: "AD"
+      // Monogram Crest: "CD" (ClaroDiG)
       ctx.save();
       ctx.font = 'bold 96px "Cinzel", "Playfair Display", "Times New Roman", serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillStyle = goldGrad;
-      ctx.shadowColor = 'rgba(212, 175, 55, 0.8)';
+      ctx.fillStyle = burgundyGrad;
+      ctx.shadowColor = 'rgba(196, 35, 64, 0.85)';
       ctx.shadowBlur = 24;
-      ctx.fillText('AD', cx, cy - 90);
+      ctx.fillText('CD', cx, cy - 90);
       ctx.restore();
 
       // Divider Line
-      ctx.strokeStyle = goldGrad;
+      ctx.strokeStyle = burgundyGrad;
       ctx.lineWidth = 2.5;
       ctx.beginPath();
-      ctx.moveTo(cx - 150, cy - 25);
-      ctx.lineTo(cx + 150, cy - 25);
+      ctx.moveTo(cx - 160, cy - 25);
+      ctx.lineTo(cx + 160, cy - 25);
       ctx.stroke();
 
-      // Prominent Title: "ADAM DOUKALI"
+      // Prominent Title: "CLARODIG"
       ctx.save();
-      ctx.font = 'bold 54px "Plus Jakarta Sans", sans-serif';
+      ctx.font = '900 54px "Plus Jakarta Sans", sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillStyle = '#FFFFFF';
       ctx.shadowColor = 'rgba(0, 0, 0, 0.95)';
       ctx.shadowBlur = 12;
-      ctx.fillText('ADAM DOUKALI', cx, cy + 28);
+      ctx.fillText('CLARODIG', cx, cy + 24);
       ctx.restore();
 
-      // Subtitle
+      // Subtitle: "DESIGNED BY ADAM DOUKALI"
       ctx.save();
       ctx.font = 'bold 22px "Plus Jakarta Sans", sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillStyle = '#d4af37';
-      ctx.fillText('WEBSITE DESIGN & DEVELOPMENT', cx, cy + 78);
+      ctx.fillStyle = '#f5bac5';
+      ctx.fillText('DESIGNED BY ADAM DOUKALI', cx, cy + 74);
       ctx.restore();
 
-      // Origin & Year
+      // Official URL: "CLARODIGI.COM"
       ctx.save();
-      ctx.font = '500 20px "Plus Jakarta Sans", sans-serif';
+      ctx.font = '800 20px "Plus Jakarta Sans", monospace';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.75)';
-      ctx.fillText('TANGER • 2026', cx, cy + 118);
+      ctx.fillStyle = '#c42340';
+      ctx.fillText('CLARODIGI.COM', cx, cy + 114);
       ctx.restore();
 
       // Secret Seal Badge
@@ -384,13 +384,13 @@
       ctx.font = '700 15px "Plus Jakarta Sans", monospace';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillStyle = 'rgba(212, 175, 55, 0.85)';
-      ctx.fillText('✦ SECRET EASTER EGG SEAL ✦', cx, cy + 165);
+      ctx.fillStyle = 'rgba(245, 186, 197, 0.90)';
+      ctx.fillText('✦ OFFICIAL CREATIVE DIGITAL SEAL ✦', cx, cy + 165);
       ctx.restore();
 
       // Bottom Stars
       ctx.font = '20px serif';
-      ctx.fillStyle = '#ffd700';
+      ctx.fillStyle = '#c42340';
       ctx.textAlign = 'center';
       ctx.fillText('★   ★   ★', cx, cy + 205);
 
