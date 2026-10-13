@@ -557,11 +557,15 @@
 
     const getHeroPlacement = () => {
       if (isMobileDevice()) {
+        const width = window.innerWidth;
+        const scale = width < 380 ? 0.58 : 0.60;
+        const posX = width < 380 ? 0.42 : 0.46;
+        const emblemX = width < 380 ? -0.10 : -0.12;
         return {
-          posX: 0.0,
+          posX: posX,
           posY: 0.52,
-          scale: 0.68,
-          emblemX: 0.0,
+          scale: scale,
+          emblemX: emblemX,
           emblemY: 0.52,
           emblemOpacity: 0.95
         };
